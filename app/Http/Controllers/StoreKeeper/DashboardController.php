@@ -108,19 +108,25 @@ class DashboardController extends Controller
         return redirect()->back()->with('message', $message);
     }
 
+    public function editprod($id)
+    {
+        $product = SoldProduct::find($id);
+        return view('storekeeper.sales.editprod')->with('product', $product);
+    }
+    
     public function updateprod(Request $request, $id)
     {
         $this->validate($request, [
-            'qty1' => 'required',
-            'price1' => 'required'
+            'qty' => 'required',
+            'price' => 'required'
         ]);
 
-        $sold_id = $request->input('order_id');
-        $qty = $request->input('qty1');
-        $price = $request->input('price1');
+        // $sold_id = $request->input('order_id');
+        $qty = $request->input('qty');
+        $price = $request->input('price');
         $total = $qty * $price;
         $update = DB::update('update sold_products set quantity = ?, price = ?, total_amount = ?
-         where id = ?', [$qty, $price, $total, $sold_id]);
+         where id = ?', [$qty, $price, $total, $id]);
         
         $message = toast('Product order successfully updated', 'info')->autoClose('3000');
         return redirect()->back()->with('message', $message);

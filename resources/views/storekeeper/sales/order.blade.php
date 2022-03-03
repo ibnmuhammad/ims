@@ -212,10 +212,6 @@
                                                 </div>
                                             </section>
                                         </div>
-                                        {{-- <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                        <button type="button" class="btn btn-primary">Save changes</button>
-                                        </div> --}}
                                     </div>
                                     </div>
                                 </div>
@@ -246,97 +242,10 @@
                                             <td>{{ number_format($sold->total_amount) }}</td>
                                             @if (!$sale->finalized_at)
                                                 <td>
-                                                    <a class="btn btn-info btn-sm" href="#" title="Edit Order" data-toggle="modal" data-target="#editProduct">
+                                                    <a class="btn btn-info btn-sm" href="{{ route('order.editprod', $sold->id) }}">
                                                         <i class="fas fa-pencil-alt">
                                                         </i>
                                                     </a>
-                                                    <!-- Modal -->
-                                                        <div class="modal fade" id="editProduct" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                                            <div class="modal-dialog" role="document">
-                                                            <div class="modal-content">
-                                                                <div class="modal-header">
-                                                                <h5 class="modal-title" id="exampleModalLabel">Edit Product Order</h5>
-                                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                                    <span aria-hidden="true">&times;</span>
-                                                                </button>
-                                                                </div>
-                                                                <div class="modal-body">
-                                                                    <section class="content">
-                                                                        <div class="container-fluid">
-                                                                            <form method="POST" action={{ route('order.updateprod', $sold->id) }}">
-                                                                                @csrf
-                                                                                <input type="hidden" name="_method" value="PUT">
-                                                                                <input type="text" name="order_id" value="{{ $sold->id }}">
-                                                                                <div class="form-group row">
-                                                                                    <label for="product" class="col-md-4 col-form-label text-md-right">{{ __('Product Item') }}</label>
-                                                        
-                                                                                    <div class="col-md-6">
-                                                                                        <input type="text" class="form-control" value="{{ $sold->products->name }} | {{ $sold->products->price }} | In stock {{ $sold->products->stock }}" disabled>
-
-                                                                                        @error('product')
-                                                                                            <span class="invalid-feedback" role="alert">
-                                                                                                <strong>{{ $message }}</strong>
-                                                                                            </span>
-                                                                                        @enderror
-                                                                                    </div>
-                                                                                </div>
-                                        
-                                                                                <div class="form-group row">
-                                                                                    <label for="qty" class="col-md-4 col-form-label text-md-right">{{ __('Quantity') }}</label>
-                                                        
-                                                                                    <div class="col-md-6">
-                                                                                        <input id="qty1" type="number" class="form-control" name="qty" value="{{ $sold->quantity }}" oninput="add_number1()" required>
-                                                        
-                                                                                        @error('qty')
-                                                                                            <span class="invalid-feedback" role="alert">
-                                                                                                <strong>{{ $message }}</strong>
-                                                                                            </span>
-                                                                                        @enderror
-                                                                                    </div>
-                                                                                </div>
-                                        
-                                                                                <div class="form-group row">
-                                                                                    <label for="price" class="col-md-4 col-form-label text-md-right">{{ __('Price') }}</label>
-                                                        
-                                                                                    <div class="col-md-6">
-                                                                                        <input id="price1" type="number" class="form-control" name="price" value="{{ $sold->price }}" oninput="add_number1()" required>
-                                                        
-                                                                                        @error('price')
-                                                                                            <span class="invalid-feedback" role="alert">
-                                                                                                <strong>{{ $message }}</strong>
-                                                                                            </span>
-                                                                                        @enderror
-                                                                                    </div>
-                                                                                </div>
-                                        
-                                                                                <div class="form-group row">
-                                                                                    <label for="amount" class="col-md-4 col-form-label text-md-right">{{ __('Total Amount') }}</label>
-                                                        
-                                                                                    <div class="col-md-6">
-                                                                                        <input id="amount1" type="number" class="form-control" name="amount" disabled>
-                                                        
-                                                                                        @error('amount')
-                                                                                            <span class="invalid-feedback" role="alert">
-                                                                                                <strong>{{ $message }}</strong>
-                                                                                            </span>
-                                                                                        @enderror
-                                                                                    </div>
-                                                                                </div>
-                                                        
-                                                                                <div class="form-group row mb-0">
-                                                                                    <div class="col-md-6 offset-md-4">
-                                                                                        <button type="submit" class="btn btn-primary">
-                                                                                            {{ __('Update Product Order') }}
-                                                                                        </button>
-                                                                                    </div>
-                                                                                </div>
-                                                                            </form>
-                                                                        </div>
-                                                                    </section>
-                                                                </div>
-                                                            </div>
-                                                            </div>
-                                                        </div>
                                                     <a class="btn btn-danger btn-sm" onclick="return myFunction();">
                                                         <form action="{{ route('order.removeprod', $sold->id) }}" method="POST" class="form-inline">
                                                             @csrf
@@ -388,10 +297,10 @@
     if (isNaN(second_number)) second_number = 0;
     var result = first_number * second_number;
     document.getElementById("amount").value = result;
-}
+    }
 </script>
 
-<script>
+{{-- <script>
     var text1 = document.getElementById("qty1");
     var text2 = document.getElementById("price1");
 
@@ -403,5 +312,5 @@
     var result = first_number * second_number;
     document.getElementById("amount1").value = result;
 }
-</script>
+</script> --}}
 @endsection

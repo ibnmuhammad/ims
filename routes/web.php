@@ -41,6 +41,7 @@ Route::group(['prefix' => 'storekeeper', 'middleware' => ['auth','role:storekeep
     Route::post('/sale/{id}', 'StoreKeeper\DashboardController@finalize')->name('sale.finalize');
     Route::get('/sales/{id}', 'StoreKeeper\DashboardController@showsale')->name('sale.showsale');
     Route::delete('/sales/{id}/edit', 'StoreKeeper\DashboardController@removeprod')->name('order.removeprod');
+    Route::get('/sales/{id}/editprod', 'StoreKeeper\DashboardController@editprod')->name('order.editprod');
     Route::put('/sales/{id}', 'StoreKeeper\DashboardController@updateprod')->name('order.updateprod');
     // Route::get('sales/{sales}/addproduct', ['as' => 'sales.addproduct', 'uses' => 'StoreKeeper\SaleController@addproduct']);
 });
