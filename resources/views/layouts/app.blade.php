@@ -1,6 +1,6 @@
 <!doctype html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-{{-- @include('inc.head') --}}
+@include('inc.head')
 <body>
     <div id="app">
         @include('sweetalert::alert')
