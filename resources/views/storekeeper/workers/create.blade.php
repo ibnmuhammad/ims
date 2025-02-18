@@ -42,13 +42,13 @@
                                 <div class="container-fluid">
                                     <form method="POST" action="{{ route('workers.store') }}">
                                         @csrf
-                
+
                                         <div class="form-group row">
                                             <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Worker Name') }}</label>
-                
+
                                             <div class="col-md-6">
                                                 <input id="name" type="text" class="form-control" name="name" required>
-                
+
                                                 @error('name')
                                                     <span class="invalid-feedback" role="alert">
                                                         <strong>{{ $message }}</strong>
@@ -59,10 +59,10 @@
 
                                         <div class="form-group row">
                                             <label for="phonenumber" class="col-md-4 col-form-label text-md-right">{{ __('Worker Phone-Number') }}</label>
-                
+
                                             <div class="col-md-6">
-                                              <input id="phonenumber" type="tel" pattern="[0-9]{4}-[0-9]{6}" class="form-control @error('phonenumber') is-invalid @enderror" name="phonenumber" value="{{ old('phonenumber') }}" required autocomplete="phonenumber">
-                
+                                              <input id="phonenumber" type="tel" pattern="[0-9]{10}" class="form-control @error('phonenumber') is-invalid @enderror" name="phonenumber" value="{{ old('phonenumber') }}" required autocomplete="phonenumber">
+
                                               @error('phonenumber')
                                                   <span class="invalid-feedback" role="alert">
                                                       <strong>{{ $message }}</strong>
@@ -70,10 +70,10 @@
                                               @enderror
                                           </div>
                                         </div>
-                                        
+
                                         <div class="form-group row">
                                             <label for="gender" class="col-md-4 col-form-label text-md-right">{{ __('Gender') }}</label>
-                
+
                                             <div class="col-md-6">
                                                     <select name="gender" id="gender" class="form-control">
                                                         <option>Male</option>
@@ -89,10 +89,10 @@
 
                                         <div class="form-group row">
                                             <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('Worker E-mail') }}</label>
-                
+
                                             <div class="col-md-6">
                                                 <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" required>
-                
+
                                                 @error('email')
                                                     <span class="invalid-feedback" role="alert">
                                                         <strong>{{ $message }}</strong>
@@ -103,10 +103,10 @@
 
                                         <div class="form-group row">
                                             <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
-                
+
                                             <div class="col-md-6">
                                                 <input id="password" type="password" class="form-control" name="password" required>
-                
+
                                                 @error('password')
                                                     <span class="invalid-feedback" role="alert">
                                                         <strong>{{ $message }}</strong>
@@ -117,10 +117,10 @@
 
                                         <div class="form-group row">
                                             <label for="password1" class="col-md-4 col-form-label text-md-right">{{ __('Confirm Password') }}</label>
-                
+
                                             <div class="col-md-6">
                                                 <input id="password1" type="password" class="form-control" name="password1" required>
-                
+
                                                 @error('password1')
                                                     <span class="invalid-feedback" role="alert">
                                                         <strong>{{ $message }}</strong>
@@ -128,7 +128,7 @@
                                                 @enderror
                                             </div>
                                         </div>
-                
+
                                         <div class="form-group row mb-0">
                                             <div class="col-md-6 offset-md-4">
                                                 <button type="submit" class="btn btn-primary">
